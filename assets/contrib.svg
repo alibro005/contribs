@@ -1,0 +1,64 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 128 128"
+  fill="none"
+>
+  <defs>
+    <linearGradient
+      id="contribs-gradient"
+      x1="24"
+      y1="24"
+      x2="104"
+      y2="104"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#A371F7"/>
+      <stop offset="1" stop-color="#58A6FF"/>
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M94 31
+       C84 21 70 16 56 18
+       C36 21 21 36 18 56
+       C15 76 25 96 42 106"
+    stroke="url(#contribs-gradient)"
+    stroke-width="9"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M43 91
+       C50 96 59 98 68 96
+       C82 93 92 82 94 68
+       C96 57 92 46 85 39"
+    stroke="url(#contribs-gradient)"
+    stroke-width="9"
+    stroke-linecap="round"
+  />
+
+  <circle
+    cx="94"
+    cy="31"
+    r="9"
+    fill="#161B22"
+    stroke="#A371F7"
+    stroke-width="5"
+  />
+
+  <circle
+    cx="43"
+    cy="91"
+    r="9"
+    fill="#161B22"
+    stroke="#58A6FF"
+    stroke-width="5"
+  />
+
+  <circle
+    cx="68"
+    cy="64"
+    r="7"
+    fill="#E6EDF3"
+  />
+</svg>
