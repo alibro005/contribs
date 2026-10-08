@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Open source contributions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="wrap">
+      <aside>
+        <img id="avatar" class="avatar" alt="GitHub profile picture" />
+
+        <h1 id="name">Open source</h1>
+
+        <p class="handle" id="handle"></p>
+
+        <p class="bio" id="bio"></p>
+
+        <div class="stats">
+          <div class="stat">
+            <b id="s-prs">–</b>
+            <span>Merged PRs</span>
+          </div>
+
+          <div class="stat">
+            <b id="s-repos">–</b>
+            <span>Projects</span>
+          </div>
+
+          <div class="stat">
+            <b id="s-stars">–</b>
+            <span>Total stars</span>
+          </div>
+        </div>
+
+        <div class="socials">
+          <a
+            id="profile"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub"
+          >
+            <img src="assets/github.svg" alt="" />
+          </a>
+
+          <a
+            href="https://linkedin.com/in/alibro005"
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn"
+          >
+            <img src="assets/linkedin.svg" alt="" />
+          </a>
+
+          <a
+            href="https://alibro.netlify.app"
+            target="_blank"
+            rel="noopener"
+            aria-label="Portfolio"
+          >
+            <img src="assets/portfolio.svg" alt="" />
+          </a>
+        </div>
+      </aside>
+
+      <main>
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">OPEN SOURCE</p>
+            <h2>Contributions</h2>
+          </div>
+
+          <span id="project-count" class="project-count"></span>
+        </div>
+
+        <div class="tools">
+          <input
+            id="q"
+            type="search"
+            placeholder="Filter by project or PR title"
+            aria-label="Filter contributions"
+          />
+
+          <select id="sort" aria-label="Sort projects">
+            <option value="recent">Most recent merge</option>
+            <option value="stars">Most starred project</option>
+            <option value="count">Most PRs merged</option>
+            <option value="name">Project name</option>
+          </select>
+        </div>
+
+        <div id="list">
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
