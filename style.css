@@ -409,6 +409,38 @@ h2 {
   opacity: 0.6;
 }
 
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 240px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.loader {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--line);
+  border-top-color: var(--purple);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .skeleton {
     animation: pulse 1.2s ease-in-out infinite alternate;
