@@ -15,7 +15,15 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
+  <body class="is-loading">
+    <!-- Full-page loading overlay -->
+    <div id="page-loader" class="page-loader" role="status" aria-live="polite">
+      <div class="loader-content">
+        <span class="loader" aria-hidden="true"></span>
+        <span>Loading Contribs...</span>
+      </div>
+    </div>
+
     <div class="wrap">
       <aside>
         <img id="avatar" class="avatar" alt="GitHub profile picture" />
@@ -81,7 +89,19 @@
             <h2>Contributions</h2>
           </div>
 
-          <span id="project-count" class="project-count"></span>
+          <div class="header-actions">
+            <span id="project-count" class="project-count"></span>
+
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Switch to light mode"
+              title="Switch theme"
+            >
+              <span id="theme-icon" aria-hidden="true">☀</span>
+            </button>
+          </div>
         </div>
 
         <div class="tools">
@@ -101,7 +121,7 @@
         </div>
 
         <div id="list">
-          <div class="loading" role="status" aria-live="polite">
+          <div class="loading">
             <span class="loader" aria-hidden="true"></span>
             <span>Loading contributions...</span>
           </div>

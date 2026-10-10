@@ -12,6 +12,25 @@ const API = "https://api.github.com";
 
 const $ = (selector) => document.querySelector(selector);
 
+const MIN_LOADER_TIME = 500;
+const loaderStartedAt = performance.now();
+
+function hidePageLoader() {
+  const elapsed = performance.now() - loaderStartedAt;
+  const remaining = Math.max(0, MIN_LOADER_TIME - elapsed);
+
+  setTimeout(() => {
+    document.body.classList.remove("is-loading");
+
+    const loader = document.querySelector("#page-loader");
+
+    if (loader) {
+      loader.hidden = true;
+      loader.style.display = "";
+    }
+  }, remaining);
+}
+
 const esc = (value) =>
   String(value ?? "").replace(
     /[&<>"']/g,
@@ -89,6 +108,51 @@ function fmtDate(iso) {
     day: "numeric",
   });
 }
+
+const themeToggle = $("#theme-toggle");
+const themeIcon = $("#theme-icon");
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+
+  const isDark = theme === "dark";
+
+  if (themeIcon) {
+    themeIcon.textContent = isDark ? "☀" : "☾";
+  }
+
+  if (themeToggle) {
+    themeToggle.setAttribute(
+      "aria-label",
+      isDark ? "Switch to light mode" : "Switch to dark mode",
+    );
+
+    themeToggle.title = isDark ? "Switch to light mode" : "Switch to dark mode";
+  }
+}
+
+let savedTheme = null;
+
+try {
+  savedTheme = localStorage.getItem("contribs-theme");
+} catch {
+  // Storage may be unavailable.
+}
+
+setTheme(savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark");
+
+themeToggle?.addEventListener("click", () => {
+  const currentTheme = document.documentElement.dataset.theme;
+  const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+  setTheme(nextTheme);
+
+  try {
+    localStorage.setItem("contribs-theme", nextTheme);
+  } catch {
+    // Theme still works for this page session.
+  }
+});
 
 async function load() {
   if (USERNAME === "YOUR_GITHUB_USERNAME") {
@@ -172,8 +236,6 @@ async function load() {
     $("#project-count").textContent =
       `${projects.length} project${projects.length === 1 ? "" : "s"}`;
 
-    render();
-
     await Promise.allSettled(
       projects.slice(0, 40).map(async (project) => {
         const repo = await gh(`${API}/repos/${project.full}`);
@@ -191,6 +253,7 @@ async function load() {
       .toLocaleString();
 
     render();
+    hidePageLoader();
   } catch (error) {
     const limited = error.status === 403 || error.status === 429;
 
@@ -203,6 +266,7 @@ async function load() {
         }
       </div>
     `;
+    hidePageLoader();
   }
 }
 
